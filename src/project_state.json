@@ -1,14 +1,10 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 3,
-  "summary": "User is trying to keep their draft app live permanently but cannot see the Go Live/Publish button and requested creating a new build/app instead.",
-  "architectural_notes": [
-    "Draft deployments expire; a separate publish/go-live step is required for a permanent production deployment."
-  ],
-  "known_issues": [
-    "User cannot see the Go Live/Publish button in the chat UI, blocking permanent publishing."
-  ],
-  "isFixRequest": true,
+  "projectStateVersion": 5,
+  "summary": "User no longer wants the in-app “Make it Live”/publishing help section; publishing UI visibility issue/help flow is no longer in scope.",
+  "architectural_notes": [],
+  "known_issues": [],
+  "isFixRequest": false,
   "existing_features": [
     {
       "id": "feature-add-a-new-in-app-help-surface-that-explains-how-to-publish-the-app-permanently-when-the-user-cannot-see-the-go-live-publish-button-in-the-chat-ui-including-clear-troubleshooting-steps-and-what-the-user-can-do-as-an-alternative-e-g-rebuild-a-new-draft",
@@ -33,16 +29,33 @@
         "REQ-3"
       ],
       "version": 1
-    }
-  ],
-  "new_feature_requests": [
+    },
     {
-      "id": "AR-1",
-      "summary": "Provide an alternative way to publish/go live (or make deployment permanent) when the Go Live/Publish button is not visible in the chat UI.",
-      "reqIds": [],
-      "status": "pending"
+      "id": "feature-remove-the-make-this-app-live-entry-point-from-the-landing-page-including-its-click-handler-and-any-related-imports-icons-so-the-landing-page-no-longer-shows-publishing-help-cta-ui",
+      "title": "Remove the “Make This App Live” entry point from the Landing Page, including its click handler and any related imports/icons, so the Landing Page no longer shows publishing/help CTA UI.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-remove-the-make-this-app-live-entry-point-from-the-authenticated-ui-user-profile-dropdown-including-its-click-handler-and-any-related-imports-icons-so-users-cannot-navigate-to-publish-help-from-inside-the-app",
+      "title": "Remove the “Make This App Live” entry point from the authenticated UI (user profile dropdown), including its click handler and any related imports/icons, so users cannot navigate to publish-help from inside the app.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-remove-the-dedicated-publish-help-route-and-page-from-the-app-so-publish-help-is-no-longer-part-of-the-tanstack-router-route-tree-and-the-publishhelppage-is-not-shipped",
+      "title": "Remove the dedicated publish help route and page from the app so /publish-help is no longer part of the TanStack Router route tree and the PublishHelpPage is not shipped.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
     }
   ],
+  "new_feature_requests": [],
   "projectName": "Add in-app “Make it Live” help flow when Go Live button is not visible",
   "clarification_mode": "instant",
   "clarification_rounds": 0

@@ -1,75 +1,84 @@
 {
   "kind": "build_request",
-  "title": "Add in-app “Make it Live” help flow when Go Live button is not visible",
+  "title": "Remove “Make This App Live” section and publish-help page",
   "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-1",
-      "text": "Add a new in-app help surface that explains how to publish the app permanently when the user cannot see the Go Live/Publish button in the chat UI, including clear troubleshooting steps and what the user can do as an alternative (e.g., rebuild a new draft).",
+      "id": "REQ-4",
+      "text": "Remove the “Make This App Live” entry point from the Landing Page, including its click handler and any related imports/icons, so the Landing Page no longer shows publishing/help CTA UI.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-1"
+          "recent-messages-user-1"
         ],
         "quotes": [
-          "I can't see it, create a new one please"
+          "remove the make this app live section its not needed"
         ]
       },
       "acceptanceCriteria": [
-        "A user can open a help view from within the app without relying on the external chat UI.",
-        "The help view includes step-by-step instructions to find the Go Live/Publish button (e.g., where it appears in the chat interface) and includes at least 3 troubleshooting tips (e.g., scroll, try another browser, disable extensions/ad blockers, zoom out).",
-        "The help view explains that drafts expire and that only publishing via the chat UI makes the deployment permanent.",
-        "The help view includes a section that explains the user’s fallback action requested (“create a new one”) as: rebuilding a new draft version, and what to expect (draft still expires until published)."
+        "LandingPage no longer renders a button labeled “Make This App Live”.",
+        "The navigate handler that routes to /publish-help is removed from LandingPage.",
+        "LandingPage builds with no unused-import lint/type errors after removing Rocket icon usage."
       ]
     },
     {
-      "id": "REQ-2",
-      "text": "Expose the new “Make it Live” help surface from the main user journeys: add a link/button on the Landing Page and add an entry point from the authenticated dashboard header area (e.g., within the user menu or adjacent header actions) so users can reach it from both home and inside a hub.",
+      "id": "REQ-5",
+      "text": "Remove the “Make This App Live” entry point from the authenticated UI (user profile dropdown), including its click handler and any related imports/icons, so users cannot navigate to publish-help from inside the app.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-1"
+          "recent-messages-user-1"
         ],
         "quotes": [
-          "I can't see it, create a new one please"
+          "remove the make this app live section its not needed"
         ]
       },
       "acceptanceCriteria": [
-        "Landing Page includes a visible, accessible link/button labeled in English (e.g., “Make this app live”).",
-        "Dashboard view includes a visible, accessible entry point to the same help content for logged-in users.",
-        "Clicking either entry point opens the same help content (either a route or a modal) and does not break existing navigation."
+        "UserProfile dropdown no longer contains a menu item labeled “Make This App Live”.",
+        "The navigate handler that routes to /publish-help is removed from UserProfile.",
+        "UserProfile builds with no unused-import lint/type errors after removing Rocket icon usage."
       ]
     },
     {
-      "id": "REQ-3",
-      "text": "Create a dedicated route (e.g., /publish-help) for the “Make it Live” content and wire it into the TanStack Router route tree.",
+      "id": "REQ-6",
+      "text": "Remove the dedicated publish help route and page from the app so /publish-help is no longer part of the TanStack Router route tree and the PublishHelpPage is not shipped.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-1"
+          "recent-messages-user-1"
         ],
         "quotes": [
-          "I can't see it, create a new one please"
+          "remove the make this app live section its not needed"
         ]
       },
       "acceptanceCriteria": [
-        "Navigating to /publish-help renders the help content.",
-        "The route is registered in the router configuration and does not affect existing routes.",
-        "The help page provides a clear way to return to the previous page or the home page."
+        "frontend/src/App.tsx no longer imports PublishHelpPage and no longer registers a route with path /publish-help.",
+        "PublishHelpPage is removed (or otherwise not reachable/compiled) and there are no broken imports.",
+        "Navigating to /publish-help no longer resolves to an in-app help page (route is absent)."
       ]
     }
   ],
   "constraints": [
-    "Do not edit files in frontend immutablePaths (e.g., frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, frontend/src/components/ui/*).",
-    "Do not claim or implement an in-app mechanism to actually publish/go-live the canister; publishing remains an external platform/chat action."
+    "Frontend immutable paths must not be edited: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, frontend/src/components/ui (compose only).",
+    "Do not add new backend services or databases; backend remains a single Motoko actor."
   ],
   "nonGoals": [
-    "Implementing a real “Go Live” button inside the app that publishes to production.",
-    "Backend changes to deployment, publishing, or canister lifecycle management.",
-    "Adding third-party support chat, email, or ticketing integrations."
+    "Do not implement any new publishing/go-live functionality or alternative publish flow.",
+    "Do not redesign unrelated Landing Page or dashboard features beyond removing the “Make This App Live” section/links.",
+    "Do not modify backend Motoko code for this change."
   ],
   "imageRequirements": {
     "required": [],
     "edits": []
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [],
+    "goalsToRemove": [],
+    "preferencesToAdd": [],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
   }
 }

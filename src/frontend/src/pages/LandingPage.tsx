@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { MessageSquare, History, Compass, Trophy, Newspaper, MessageCircle, Sparkles, Rocket } from 'lucide-react';
+import { MessageSquare, History, Compass, Trophy, Newspaper, MessageCircle, Sparkles } from 'lucide-react';
 import { useNavigate, useSearch } from '@tanstack/react-router';
 import { toast } from 'sonner';
 import NewsTickerBar from '@/components/NewsTickerBar';
@@ -148,10 +148,6 @@ export default function LandingPage() {
     navigate({ to: '/predictions' });
   };
 
-  const handleNavigateToPublishHelp = () => {
-    navigate({ to: '/publish-help' });
-  };
-
   return (
     <div className="min-h-screen flex flex-col relative">
       <div 
@@ -210,16 +206,6 @@ export default function LandingPage() {
                 >
                   <Compass className="mr-3 h-7 w-7" />
                   Browse Popular Hubs
-                </Button>
-
-                <Button 
-                  size="lg" 
-                  onClick={handleNavigateToPublishHelp}
-                  variant="outline"
-                  className="text-xl px-12 py-8 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-110 bg-gradient-to-r from-green-600/20 to-blue-600/20 hover:from-green-600/30 hover:to-blue-600/30 text-white font-bold border-2 border-green-400/40 backdrop-blur-md"
-                >
-                  <Rocket className="mr-3 h-7 w-7" />
-                  Make This App Live
                 </Button>
               </div>
 

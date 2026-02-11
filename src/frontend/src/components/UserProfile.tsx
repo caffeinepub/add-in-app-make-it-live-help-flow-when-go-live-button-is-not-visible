@@ -9,7 +9,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Button } from '@/components/ui/button';
-import { User, LogOut, Share2, Trophy, Rocket } from 'lucide-react';
+import { User, LogOut, Share2, Trophy } from 'lucide-react';
 import { toast } from 'sonner';
 import { useNavigate } from '@tanstack/react-router';
 
@@ -68,10 +68,6 @@ export default function UserProfile({ user, points, onLogout }: UserProfileProps
     navigate({ to: '/' });
   };
 
-  const handleNavigateToPublishHelp = () => {
-    navigate({ to: '/publish-help' });
-  };
-
   const getTierBadge = () => {
     if (points >= 1000) return { name: 'Legend', icon: '👑', color: 'text-yellow-400' };
     if (points >= 500) return { name: 'Captain', icon: '⭐', color: 'text-blue-400' };
@@ -128,10 +124,6 @@ export default function UserProfile({ user, points, onLogout }: UserProfileProps
         <DropdownMenuItem onClick={handleShareHub} disabled={isGeneratingLink}>
           <Share2 className="mr-2 h-4 w-4" />
           <span>{isGeneratingLink ? 'Generating...' : 'Share Hub Link'}</span>
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={handleNavigateToPublishHelp}>
-          <Rocket className="mr-2 h-4 w-4" />
-          <span>Make This App Live</span>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={handleLogout}>

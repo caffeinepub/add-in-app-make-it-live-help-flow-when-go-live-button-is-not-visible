@@ -1,13 +1,11 @@
 # Specification
 
 ## Summary
-**Goal:** Provide an in-app “Make it Live” help flow that explains how to publish permanently when the user can’t find the Go Live/Publish button in the external chat UI.
+**Goal:** Remove the “Make This App Live” entry points and fully remove the /publish-help page/route from the frontend.
 
 **Planned changes:**
-- Add a dedicated in-app help page that explains where to find the Go Live/Publish button, includes step-by-step instructions, and provides at least three troubleshooting tips (e.g., scroll, try another browser, disable extensions/ad blockers, zoom out).
-- Include guidance that drafts expire and that only publishing via the chat UI makes the deployment permanent.
-- Add a clear fallback section for “create a new one” explaining how to rebuild a new draft and what to expect (it still expires until published).
-- Add entry points to this help content from both the Landing Page (“Make this app live”) and the authenticated dashboard header area.
-- Create and register a dedicated route (e.g., `/publish-help`) in the TanStack Router route tree, including a clear way to go back or return home.
+- Remove the “Make This App Live” section/button from the Landing Page, including its click handler and any related imports/icons.
+- Remove the “Make This App Live” menu item from the authenticated user profile dropdown, including its click handler and any related imports/icons.
+- Remove the /publish-help route registration and stop shipping/compiling the PublishHelpPage, ensuring no broken imports remain.
 
-**User-visible outcome:** Users can open an in-app “Make it Live” help page from both the landing page and dashboard (or directly via `/publish-help`) to troubleshoot missing Go Live/Publish controls and understand the draft-rebuild fallback.
+**User-visible outcome:** Users will no longer see “Make This App Live” in the Landing Page or profile dropdown, and /publish-help will no longer exist as an in-app page.

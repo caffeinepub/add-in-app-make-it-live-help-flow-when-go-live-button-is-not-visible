@@ -10,7 +10,6 @@ import TeamNewsPage from './pages/TeamNewsPage';
 import FanCommunityPage from './pages/FanCommunityPage';
 import FanPredictionsPage from './pages/FanPredictionsPage';
 import FanLeaderboardPage from './pages/FanLeaderboardPage';
-import PublishHelpPage from './pages/PublishHelpPage';
 
 // Create root route with layout
 const rootRoute = createRootRoute({
@@ -79,12 +78,6 @@ const fanLeaderboardRoute = createRoute({
   component: FanLeaderboardPage,
 });
 
-const publishHelpRoute = createRoute({
-  getParentRoute: () => rootRoute,
-  path: '/publish-help',
-  component: PublishHelpPage,
-});
-
 // Create router
 const routeTree = rootRoute.addChildren([
   landingRoute,
@@ -96,7 +89,6 @@ const routeTree = rootRoute.addChildren([
   fanCommunityRoute,
   fanPredictionsRoute,
   fanLeaderboardRoute,
-  publishHelpRoute,
 ]);
 const router = createRouter({ routeTree });
 

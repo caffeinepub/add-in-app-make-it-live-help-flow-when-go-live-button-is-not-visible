@@ -1,50 +1,41 @@
 {
   "kind": "spec_vs_diff_report",
   "version": "1.0",
-  "generatedAt": "2026-02-11T23:25:09.161Z",
-  "summary": "A new PublishHelpPage and /publish-help route were added and wired into the TanStack Router. Landing-page and dashboard/user-menu entry points appear to be in progress, but some acceptance-criteria details are not verifiable due to truncation. There are also unrequested modifications to files explicitly listed as immutable in the BuildRequest constraints.",
+  "generatedAt": "2026-02-11T23:47:15.648Z",
+  "summary": "REQ-6 is partially addressed: /publish-help is not present in the shown TanStack Router route tree in App.tsx. However, PublishHelpPage still exists as a file (and is even listed as modified), and the diff does not provide clear evidence that the “Make This App Live” CTAs and their /publish-help navigation handlers were removed from LandingPage and UserProfile.",
   "missing_requirements": [
     {
-      "id": "REQ-1",
-      "requirement": "Help view includes step-by-step instructions to find the Go Live/Publish button, at least 3 troubleshooting tips, an explanation that drafts expire and only publishing via chat makes it permanent, and a fallback section explaining rebuilding a new draft and what to expect.",
-      "reason": "PublishHelpPage content is truncated; while it clearly contains a 'Draft vs. Live' notice and begins step-by-step instructions, the diff summary does not show at least 3 troubleshooting tips nor the explicit fallback 'rebuild a new draft' section in a way that can be confirmed from provided evidence.",
+      "id": "REQ-4",
+      "requirement": "Remove the “Make This App Live” entry point from the Landing Page, including its click handler and any related imports/icons.",
+      "reason": "The diff summary for LandingPage.tsx is truncated and does not show removal of the “Make This App Live” button/CTA, the /publish-help navigate handler, or removal of related imports/icons (e.g., Rocket).",
       "evidence": [
-        "frontend/src/pages/PublishHelpPage.tsx (truncated)"
+        "frontend/src/pages/LandingPage.tsx (truncated)"
       ]
     },
     {
-      "id": "REQ-2",
-      "requirement": "Dashboard view includes a visible, accessible entry point from the authenticated dashboard header area to the same help content.",
-      "reason": "UserProfile.tsx shows a navigation handler to /publish-help, but the diff summary is truncated before showing a visible menu item/button that calls it, so the actual dashboard header entry point cannot be confirmed.",
+      "id": "REQ-5",
+      "requirement": "Remove the “Make This App Live” entry point from the authenticated UI (user profile dropdown), including its click handler and any related imports/icons.",
+      "reason": "The UserProfile.tsx diff is truncated and does not show removal of the dropdown menu item labeled “Make This App Live”, the /publish-help navigate handler, or cleanup of related imports/icons (e.g., Rocket).",
       "evidence": [
         "frontend/src/components/UserProfile.tsx (truncated)"
       ]
-    }
-  ],
-  "hallucinated_features": [
-    {
-      "description": "Modified frontend immutablePaths hooks (useActor.ts and useInternetIdentity.ts).",
-      "reason": "BuildRequest constraint explicitly forbids editing these files; changes here are unrequested and violate the stated constraint.",
-      "evidence": [
-        "frontend/src/hooks/useActor.ts",
-        "frontend/src/hooks/useInternetIdentity.ts (truncated)"
-      ]
     },
     {
-      "description": "Added actor query invalidation/refetch behavior when the actor changes.",
-      "reason": "Not requested by any REQ; appears unrelated to the 'Make it Live' help flow feature.",
+      "id": "REQ-6",
+      "requirement": "Remove the dedicated publish help route and page so /publish-help is no longer part of the router route tree and PublishHelpPage is not shipped.",
+      "reason": "While App.tsx shows no /publish-help route, the PublishHelpPage file still exists (and is listed as modified), so it is not clearly removed/unshipped, and the diff does not demonstrate that it is unreachable/unused everywhere.",
       "evidence": [
-        "frontend/src/hooks/useActor.ts"
+        "frontend/src/App.tsx",
+        "frontend/src/pages/PublishHelpPage.tsx"
       ]
     }
   ],
-  "confidence": 0.63,
+  "hallucinated_features": [],
+  "confidence": 0.66,
   "changed_files": [
     "frontend-file-summaries.txt",
     "frontend/src/App.tsx",
     "frontend/src/components/UserProfile.tsx",
-    "frontend/src/hooks/useActor.ts",
-    "frontend/src/hooks/useInternetIdentity.ts",
     "frontend/src/pages/LandingPage.tsx",
     "frontend/src/pages/PublishHelpPage.tsx",
     "project_state.json"
