@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap');
+
+@font-face {
+  font-family: 'Houston Sports';
+  src: url('/FANFORGE.png') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: oklch(100% 0 0);
+    --foreground: oklch(15% 0 0);
+    --card: oklch(100% 0 0);
+    --card-foreground: oklch(15% 0 0);
+    --popover: oklch(100% 0 0);
+    --popover-foreground: oklch(15% 0 0);
+    --primary: oklch(45.3% 0.313 264.05);
+    --primary-foreground: oklch(100% 0 0);
+    --secondary: oklch(96.5% 0 0);
+    --secondary-foreground: oklch(15% 0 0);
+    --muted: oklch(96.5% 0 0);
+    --muted-foreground: oklch(45.3% 0.016 286.75);
+    --accent: oklch(96.5% 0 0);
+    --accent-foreground: oklch(15% 0 0);
+    --destructive: oklch(57.6% 0.242 29.23);
+    --destructive-foreground: oklch(100% 0 0);
+    --border: oklch(92.4% 0 0);
+    --input: oklch(92.4% 0 0);
+    --ring: oklch(45.3% 0.313 264.05);
+    --radius: 0.5rem;
+    --chart-1: oklch(62% 0.25 12);
+    --chart-2: oklch(72% 0.18 165);
+    --chart-3: oklch(65% 0.24 60);
+    --chart-4: oklch(68% 0.23 285);
+    --chart-5: oklch(75% 0.2 340);
+  }
+
+  .dark {
+    --background: oklch(15% 0.02 286.75);
+    --foreground: oklch(98% 0 0);
+    --card: oklch(15% 0.02 286.75);
+    --card-foreground: oklch(98% 0 0);
+    --popover: oklch(15% 0.02 286.75);
+    --popover-foreground: oklch(98% 0 0);
+    --primary: oklch(70.3% 0.273 264.05);
+    --primary-foreground: oklch(15% 0 0);
+    --secondary: oklch(25% 0.02 286.75);
+    --secondary-foreground: oklch(98% 0 0);
+    --muted: oklch(25% 0.02 286.75);
+    --muted-foreground: oklch(65% 0.016 286.75);
+    --accent: oklch(25% 0.02 286.75);
+    --accent-foreground: oklch(98% 0 0);
+    --destructive: oklch(62% 0.257 29.23);
+    --destructive-foreground: oklch(98% 0 0);
+    --border: oklch(25% 0.02 286.75);
+    --input: oklch(25% 0.02 286.75);
+    --ring: oklch(70.3% 0.273 264.05);
+    --chart-1: oklch(75% 0.18 60);
+    --chart-2: oklch(68% 0.23 165);
+    --chart-3: oklch(62% 0.25 12);
+    --chart-4: oklch(72% 0.2 285);
+    --chart-5: oklch(65% 0.24 340);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', 'Poppins', sans-serif;
+  }
+}
+
+.fanforge-title {
+  font-family: 'Houston Sports', 'Anton', 'College Block', sans-serif;
+  font-size: clamp(2.25rem, 8vw, 5rem);
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-align: center;
+  color: #FFFFFF;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.8), 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes ticker-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.8s ease-out;
+}
+
+.animate-fade-in {
+  animation: fade-in 1s ease-out;
+}
+
+.animate-fade-in-delay {
+  animation: fade-in 1s ease-out 0.3s both;
+}
+
+.animate-fade-in-delay-2 {
+  animation: fade-in 1s ease-out 0.6s both;
+}
+
+.animate-fade-in-delay-3 {
+  animation: fade-in 1s ease-out 0.9s both;
+}
+
+.animate-fade-in-delay-4 {
+  animation: fade-in 1s ease-out 1.2s both;
+}
+
+.ticker-scroll {
+  animation: ticker-scroll 30s linear infinite;
+}

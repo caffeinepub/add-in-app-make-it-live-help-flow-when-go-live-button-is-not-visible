@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "User is trying to keep their draft app live permanently but cannot see the Go Live/Publish button and requested creating a new build/app instead.",
+  "architectural_notes": [
+    "Draft deployments expire; a separate publish/go-live step is required for a permanent production deployment."
+  ],
+  "known_issues": [
+    "User cannot see the Go Live/Publish button in the chat UI, blocking permanent publishing."
+  ],
+  "isFixRequest": true,
+  "existing_features": [
+    {
+      "id": "feature-add-a-new-in-app-help-surface-that-explains-how-to-publish-the-app-permanently-when-the-user-cannot-see-the-go-live-publish-button-in-the-chat-ui-including-clear-troubleshooting-steps-and-what-the-user-can-do-as-an-alternative-e-g-rebuild-a-new-draft",
+      "title": "Add a new in-app help surface that explains how to publish the app permanently when the user cannot see the Go Live/Publish button in the chat UI, including clear troubleshooting steps and what the user can do as an alternative (e.g., rebuild a new draft).",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-expose-the-new-make-it-live-help-surface-from-the-main-user-journeys-add-a-link-button-on-the-landing-page-and-add-an-entry-point-from-the-authenticated-dashboard-header-area-e-g-within-the-user-menu-or-adjacent-header-actions-so-users-can-reach-it-from-both-home-and-inside-a-hub",
+      "title": "Expose the new “Make it Live” help surface from the main user journeys: add a link/button on the Landing Page and add an entry point from the authenticated dashboard header area (e.g., within the user menu or adjacent header actions) so users can reach it from both home and inside a hub.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-dedicated-route-e-g-publish-help-for-the-make-it-live-content-and-wire-it-into-the-tanstack-router-route-tree",
+      "title": "Create a dedicated route (e.g., /publish-help) for the “Make it Live” content and wire it into the TanStack Router route tree.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Provide an alternative way to publish/go live (or make deployment permanent) when the Go Live/Publish button is not visible in the chat UI.",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "projectName": "Add in-app “Make it Live” help flow when Go Live button is not visible",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

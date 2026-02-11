@@ -1,0 +1,52 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-11T23:25:09.161Z",
+  "summary": "A new PublishHelpPage and /publish-help route were added and wired into the TanStack Router. Landing-page and dashboard/user-menu entry points appear to be in progress, but some acceptance-criteria details are not verifiable due to truncation. There are also unrequested modifications to files explicitly listed as immutable in the BuildRequest constraints.",
+  "missing_requirements": [
+    {
+      "id": "REQ-1",
+      "requirement": "Help view includes step-by-step instructions to find the Go Live/Publish button, at least 3 troubleshooting tips, an explanation that drafts expire and only publishing via chat makes it permanent, and a fallback section explaining rebuilding a new draft and what to expect.",
+      "reason": "PublishHelpPage content is truncated; while it clearly contains a 'Draft vs. Live' notice and begins step-by-step instructions, the diff summary does not show at least 3 troubleshooting tips nor the explicit fallback 'rebuild a new draft' section in a way that can be confirmed from provided evidence.",
+      "evidence": [
+        "frontend/src/pages/PublishHelpPage.tsx (truncated)"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "requirement": "Dashboard view includes a visible, accessible entry point from the authenticated dashboard header area to the same help content.",
+      "reason": "UserProfile.tsx shows a navigation handler to /publish-help, but the diff summary is truncated before showing a visible menu item/button that calls it, so the actual dashboard header entry point cannot be confirmed.",
+      "evidence": [
+        "frontend/src/components/UserProfile.tsx (truncated)"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "Modified frontend immutablePaths hooks (useActor.ts and useInternetIdentity.ts).",
+      "reason": "BuildRequest constraint explicitly forbids editing these files; changes here are unrequested and violate the stated constraint.",
+      "evidence": [
+        "frontend/src/hooks/useActor.ts",
+        "frontend/src/hooks/useInternetIdentity.ts (truncated)"
+      ]
+    },
+    {
+      "description": "Added actor query invalidation/refetch behavior when the actor changes.",
+      "reason": "Not requested by any REQ; appears unrelated to the 'Make it Live' help flow feature.",
+      "evidence": [
+        "frontend/src/hooks/useActor.ts"
+      ]
+    }
+  ],
+  "confidence": 0.63,
+  "changed_files": [
+    "frontend-file-summaries.txt",
+    "frontend/src/App.tsx",
+    "frontend/src/components/UserProfile.tsx",
+    "frontend/src/hooks/useActor.ts",
+    "frontend/src/hooks/useInternetIdentity.ts",
+    "frontend/src/pages/LandingPage.tsx",
+    "frontend/src/pages/PublishHelpPage.tsx",
+    "project_state.json"
+  ]
+}

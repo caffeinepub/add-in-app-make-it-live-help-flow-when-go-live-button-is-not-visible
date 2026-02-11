@@ -1,0 +1,75 @@
+{
+  "kind": "build_request",
+  "title": "Add in-app “Make it Live” help flow when Go Live button is not visible",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Add a new in-app help surface that explains how to publish the app permanently when the user cannot see the Go Live/Publish button in the chat UI, including clear troubleshooting steps and what the user can do as an alternative (e.g., rebuild a new draft).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "I can't see it, create a new one please"
+        ]
+      },
+      "acceptanceCriteria": [
+        "A user can open a help view from within the app without relying on the external chat UI.",
+        "The help view includes step-by-step instructions to find the Go Live/Publish button (e.g., where it appears in the chat interface) and includes at least 3 troubleshooting tips (e.g., scroll, try another browser, disable extensions/ad blockers, zoom out).",
+        "The help view explains that drafts expire and that only publishing via the chat UI makes the deployment permanent.",
+        "The help view includes a section that explains the user’s fallback action requested (“create a new one”) as: rebuilding a new draft version, and what to expect (draft still expires until published)."
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Expose the new “Make it Live” help surface from the main user journeys: add a link/button on the Landing Page and add an entry point from the authenticated dashboard header area (e.g., within the user menu or adjacent header actions) so users can reach it from both home and inside a hub.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "I can't see it, create a new one please"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Landing Page includes a visible, accessible link/button labeled in English (e.g., “Make this app live”).",
+        "Dashboard view includes a visible, accessible entry point to the same help content for logged-in users.",
+        "Clicking either entry point opens the same help content (either a route or a modal) and does not break existing navigation."
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Create a dedicated route (e.g., /publish-help) for the “Make it Live” content and wire it into the TanStack Router route tree.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "I can't see it, create a new one please"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Navigating to /publish-help renders the help content.",
+        "The route is registered in the router configuration and does not affect existing routes.",
+        "The help page provides a clear way to return to the previous page or the home page."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not edit files in frontend immutablePaths (e.g., frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, frontend/src/components/ui/*).",
+    "Do not claim or implement an in-app mechanism to actually publish/go-live the canister; publishing remains an external platform/chat action."
+  ],
+  "nonGoals": [
+    "Implementing a real “Go Live” button inside the app that publishes to production.",
+    "Backend changes to deployment, publishing, or canister lifecycle management.",
+    "Adding third-party support chat, email, or ticketing integrations."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "In-app “Make it Live” publish help route and entry points",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Add an in-app help view explaining how to publish permanently when the Go Live/Publish button is not visible, including troubleshooting and fallback rebuild guidance.",
+      "acceptanceCriteria": [
+        "A user can open a help view from within the app without relying on the external chat UI.",
+        "The help view includes step-by-step instructions to find the Go Live/Publish button (e.g., where it appears in the chat interface) and includes at least 3 troubleshooting tips (e.g., scroll, try another browser, disable extensions/ad blockers, zoom out).",
+        "The help view explains that drafts expire and that only publishing via the chat UI makes the deployment permanent.",
+        "The help view includes a section that explains the user’s fallback action requested (“create a new one”) as: rebuilding a new draft version, and what to expect (draft still expires until published)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/PublishHelpPage.tsx",
+          "operation": "create",
+          "description": "Create the “Make it Live” help page content (step-by-step where to find Go Live/Publish in the external chat UI; at least 3 troubleshooting tips; explanation that drafts expire and only external publish makes it permanent; fallback section describing rebuilding a new draft and what to expect). Include clear headings and concise, scannable lists; do not claim any in-app publishing capability; include a clear return action (back + home)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Add entry points to the “Make it Live” help surface from the Landing Page and from the authenticated dashboard header area.",
+      "acceptanceCriteria": [
+        "Landing Page includes a visible, accessible link/button labeled in English (e.g., “Make this app live”).",
+        "Dashboard view includes a visible, accessible entry point to the same help content for logged-in users.",
+        "Clicking either entry point opens the same help content (either a route or a modal) and does not break existing navigation."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/LandingPage.tsx",
+          "operation": "modify",
+          "description": "Add a visible, accessible CTA link/button on the Landing Page labeled in English (e.g., “Make this app live”) that navigates to the /publish-help route (same help content). Ensure it fits existing hero layout and does not interfere with current auth/shared-hub flows."
+        },
+        {
+          "path": "frontend/src/components/UserProfile.tsx",
+          "operation": "modify",
+          "description": "Add a dashboard-header entry point by inserting a new item in the existing user dropdown menu (authenticated/known-user context) that navigates to /publish-help (same help content). Ensure accessible label and that existing menu actions (share/logout) continue to work."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Register a dedicated /publish-help route in the TanStack Router tree and provide a clear way to return.",
+      "acceptanceCriteria": [
+        "Navigating to /publish-help renders the help content.",
+        "The route is registered in the router configuration and does not affect existing routes.",
+        "The help page provides a clear way to return to the previous page or the home page."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire the new /publish-help route into the TanStack Router route tree by importing the new PublishHelpPage component, creating the route, and adding it to rootRoute children. Keep existing routes unchanged."
+        },
+        {
+          "path": "frontend/src/pages/PublishHelpPage.tsx",
+          "operation": "modify",
+          "description": "Ensure the page includes explicit navigation controls (e.g., “Back” and “Go to Home”) that work even when a user lands directly on /publish-help, satisfying the return-path requirement without altering other routes."
+        }
+      ]
+    }
+  ]
+}

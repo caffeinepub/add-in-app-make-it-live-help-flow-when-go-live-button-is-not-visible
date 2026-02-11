@@ -1,2 +1,3 @@
-# add-in-app-make-it-live-help-flow-when-go-live-button-is-not-visible
-Exported from Caffeine project: Add in-app “Make it Live” help flow when Go Live button is not visible
+## 
+
+To run app build and run docker image: `docker build -t app . docker run -it --network host app`
